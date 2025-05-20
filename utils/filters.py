@@ -51,11 +51,34 @@ def image_flipping(image, direction='horizontal'):
 
 def image_zooming(image, scale=1.5):
     h, w = image.shape[:2]
-    return cv2.resize(image, None, fx=scale, fy=scale)
+    new_h, new_w = int(h * scale), int(w * scale)
+
+    # Resize gambar
+    zoomed = cv2.resize(image, (new_w, new_h))
+
+    # Crop bagian tengah agar ukuran tetap seperti semula
+    start_y = (new_h - h) // 2
+    start_x = (new_w - w) // 2
+    cropped = zoomed[start_y:start_y + h, start_x:start_x + w]
+
+    return cropped
 
 def image_shrinking(image, scale=0.5):
     h, w = image.shape[:2]
-    return cv2.resize(image, None, fx=scale, fy=scale)
+    new_h, new_w = int(h * scale), int(w * scale)
+
+    # Resize gambar
+    shrunk = cv2.resize(image, (new_w, new_h))
+
+    # Buat kanvas berwarna hitam dengan ukuran asli
+    canvas = np.zeros_like(image)
+    start_y = (h - new_h) // 2
+    start_x = (w - new_w) // 2
+
+    # Tempatkan gambar yang sudah dikecilkan di tengah kanvas
+    canvas[start_y:start_y + new_h, start_x:start_x + new_w] = shrunk
+
+    return canvas
 
 def image_logarithmic(image):
     image = image.astype(np.float32)  # pastikan float agar tidak overflow

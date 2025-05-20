@@ -9,9 +9,9 @@ from utils import filters
 class IMPEGApp:
     def __init__(self, master):
         self.master = master
-        self.master.title("IMPEG")
+        self.master.title("PIXORA")
         self.master.geometry("1000x600")
-        self.master.configure(bg="#d0f0f7")
+        self.master.configure(bg="#FEBA17")
 
         self.create_top_buttons()
         self.build_homepage()
@@ -25,14 +25,14 @@ class IMPEGApp:
             self.master.quit()
 
     def create_top_buttons(self):
-        self.top_frame = tk.Frame(self.master, bg="#e0f7fa")
+        self.top_frame = tk.Frame(self.master, bg="#FEBA17")
         self.top_frame.pack(side="top", fill="x", pady=5)
 
         btn_style = {
             "font": ("Helvetica", 10, "bold"),
-            "bg": "#004d40",
+            "bg": "#BE5B50",
             "fg": "white",
-            "activebackground": "#00796b",
+            "activebackground": "#8A2D3B",
             "activeforeground": "white",
             "bd": 0,
             "padx": 20,
@@ -75,23 +75,23 @@ class IMPEGApp:
 
     def build_homepage(self):
         self.clear_widgets()
-        self.content_frame = tk.Frame(self.master, bg="#e0f7fa")
+        self.content_frame = tk.Frame(self.master, bg="#FDFAF6")
         self.content_frame.pack(fill="both", expand=True)
 
         logo_path = os.path.join("assets", "logo.png")
         if os.path.exists(logo_path):
             logo_img = Image.open(logo_path).resize((180, 180))
             logo_img_tk = ImageTk.PhotoImage(logo_img)
-            logo_label = tk.Label(self.content_frame, image=logo_img_tk, bg="#e0f7fa", bd=2, relief="groove")
+            logo_label = tk.Label(self.content_frame, image=logo_img_tk, bg="#FDFAF6", bd=2, relief="groove")
             logo_label.image = logo_img_tk
             logo_label.pack(pady=20)
 
         title_label = tk.Label(
             self.content_frame,
-            text="IMPEG",
+            text="PIXORA",
             font=("Helvetica", 32, "bold"),
-            bg="#e0f7fa",
-            fg="#00796b"
+            bg="#FDFAF6",
+            fg="#74512D"
         )
         title_label.pack()
 
@@ -99,8 +99,8 @@ class IMPEGApp:
             self.content_frame,
             text="Image Processing Editor GUI",
             font=("Helvetica", 14),
-            bg="#e0f7fa",
-            fg="#004d40"
+            bg="#FDFAF6",
+            fg="#74512D"
         )
         subtitle_label.pack(pady=5)
 
@@ -108,10 +108,10 @@ class IMPEGApp:
             self.content_frame,
             text="Start",
             font=("Helvetica", 12, "bold"),
-            bg="#00796b",
+            bg="#4E1F00",
             fg="white",
-            activebackground="#004d40",
-            activeforeground="white",
+            activebackground="#BE5B50",
+            activeforeground="#4E1F00",
             padx=20,
             pady=5,
             relief="raised",
@@ -121,32 +121,32 @@ class IMPEGApp:
 
     def show_about(self):
         self.clear_widgets()
-        self.content_frame = tk.Frame(self.master, bg="#e0f7fa")
+        self.content_frame = tk.Frame(self.master, bg="#FDFAF6")
         self.content_frame.pack(fill="both", expand=True)
 
         title = tk.Label(
             self.content_frame,
-            text="Tentang Aplikasi IMPEG",
+            text="Tentang Aplikasi PIXORA",
             font=("Helvetica", 20, "bold"),
-            fg="#004d40",
-            bg="#e0f7fa"
+            fg="#74512D",
+            bg="#FDFAF6"
         )
         title.pack(pady=20)
 
         description = tk.Label(
             self.content_frame,
             text=(
-                "IMPEG v1.0\n"
+                "PIXORA\n"
                 "Aplikasi Pengolahan Citra berbasis GUI\n"
-                "Dikembangkan oleh Mutia dan Tim\n\n"
+                "Dikembangkan oleh Mutia Nandhika, Khansa Khalda, Kintan Kinasih Mahaputri\n\n"
                 "Fitur-fitur termasuk efek negatif, rotasi, blending,\n"
                 "penyesuaian kontras, kecerahan, ketajaman, dan lainnya.\n\n"
                 "Gunakan aplikasi ini untuk eksplorasi dan pembelajaran\n"
                 "tentang pemrosesan citra digital."
             ),
             font=("Arial", 13),
-            fg="#00695c",
-            bg="#e0f7fa",
+            fg="#74512D",
+            bg="#FDFAF6",
             justify="center"
         )
         description.pack(pady=10)
@@ -155,9 +155,9 @@ class IMPEGApp:
             self.content_frame,
             text="⬅ Kembali ke Beranda",
             font=("Helvetica", 12, "bold"),
-            bg="#00796b",
+            bg="#4E1F00",
             fg="white",
-            activebackground="#004d40",
+            activebackground="#BE5B50",
             activeforeground="white",
             padx=10,
             pady=5,
@@ -167,13 +167,13 @@ class IMPEGApp:
 
     def start_editor(self):
         self.clear_widgets()
-        self.content_frame = tk.Frame(self.master, bg="#f0f0f0")
+        self.content_frame = tk.Frame(self.master, bg="#FDFAF6")
         self.content_frame.pack(fill="both", expand=True)
 
-        control_frame = tk.Frame(self.content_frame, bg="#f0f0f0")
+        control_frame = tk.Frame(self.content_frame, bg="#FDFAF6")
         control_frame.pack(pady=10)
 
-        filter_frame = tk.LabelFrame(self.content_frame, text="Filter dan Efek", bg="#ffffff", padx=10, pady=10, font=("Helvetica", 12, "bold"), fg="#004d40")
+        filter_frame = tk.LabelFrame(self.content_frame, text="Filter dan Efek", bg="#ffffff", padx=10, pady=10, font=("Helvetica", 12, "bold"), fg="#BE5B50")
         filter_frame.pack(pady=10)
 
         filter_buttons = [
@@ -192,27 +192,27 @@ class IMPEGApp:
 
         for text, command in filter_buttons:
             btn = tk.Button(filter_frame, text=text, command=command,
-                            bg="#004d40", fg="white", activebackground="#00796b", activeforeground="white",
+                            bg="#BE5B50", fg="white", activebackground="#8A2D3B", activeforeground="white",
                             relief="raised", padx=10, pady=5, font=("Helvetica", 10, "bold"))
             btn.pack(side=tk.LEFT, padx=5, pady=5)
 
         tk.Button(control_frame, text="📤 Upload Gambar", command=self.upload_image,
                   bg="#0288d1", fg="white", font=("Helvetica", 10, "bold"), padx=10, pady=5).pack(side=tk.LEFT, padx=5)
         tk.Button(control_frame, text="🔄 Reset", command=self.reset_image,
-                  bg="#ffa000", fg="white", font=("Helvetica", 10, "bold"), padx=10, pady=5).pack(side=tk.LEFT, padx=5)
+                  bg="#85193C", fg="white", font=("Helvetica", 10, "bold"), padx=10, pady=5).pack(side=tk.LEFT, padx=5)
         tk.Button(control_frame, text="💾 Simpan Gambar", command=self.save_image,
                   bg="#43a047", fg="white", font=("Helvetica", 10, "bold"), padx=10, pady=5).pack(side=tk.LEFT, padx=5)
 
-        image_frame = tk.Frame(self.content_frame, bg="#f0f0f0")
+        image_frame = tk.Frame(self.content_frame, bg="#FDFAF6")
         image_frame.pack(pady=10, expand=True)
 
-        self.before_label = tk.Label(image_frame, text="Before", bg="#f0f0f0")
+        self.before_label = tk.Label(image_frame, text="Before", bg="#FDFAF6")
         self.before_label.pack(side=tk.LEFT, padx=10)
 
-        self.after_label = tk.Label(image_frame, text="After", bg="#f0f0f0")
+        self.after_label = tk.Label(image_frame, text="After", bg="#FDFAF6")
         self.after_label.pack(side=tk.RIGHT, padx=10)
 
-        slider_frame = tk.Frame(self.content_frame, bg="#f0f0f0")
+        slider_frame = tk.Frame(self.content_frame, bg="#FDFAF6")
         slider_frame.pack(side=tk.BOTTOM, pady=10)
 
         self.build_slider(slider_frame, "Contrast", self.adjust_contrast)
@@ -224,13 +224,13 @@ class IMPEGApp:
     def effect_page(self):
         self.clear_widgets()
 
-        label = tk.Label(self.master, text="Halaman Effect", font=("Helvetica", 16), bg="#d0f0f7")
+        label = tk.Label(self.master, text="Halaman Effect", font=("Helvetica", 16), bg="#FEBA17")
         label.pack(pady=50)
 
     def build_slider(self, frame, label, command):
-        subframe = tk.Frame(frame, bg="#f0f0f0")
+        subframe = tk.Frame(frame, bg="#FDFAF6")
         subframe.pack(side=tk.LEFT, padx=10)
-        tk.Label(subframe, text=label, bg="#f0f0f0").pack()
+        tk.Label(subframe, text=label, bg="#FDFAF6").pack()
         scale = tk.Scale(subframe, from_=0, to=2, resolution=0.1, orient=tk.HORIZONTAL,
                          command=lambda val, cmd=command: cmd(float(val)))
         scale.set(1)
