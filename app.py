@@ -136,7 +136,7 @@ elif page == "ℹ️ About":
 
     - Mutia Nandhika  (H1D022078)
     - Khansa Khalda  (H1D022086)
-    - Kintan Kinasih Mahaputri  (H1D022012)
+    - Kintan Kinasih Mahaputri  (H1D022019)
 
     Proyek ini dikembangkan sebagai sarana eksplorasi dan pembelajaran tentang pemrosesan citra digital dengan tampilan antarmuka yang ramah pengguna.
     """)
